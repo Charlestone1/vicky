@@ -1,0 +1,630 @@
+{
+    "message": "Resource fetched successfully",
+    "success": true,
+    "data": [
+        {
+            "_id": "653c1e321d47c8ef5bc005db",
+            "serviceId": {
+                "_id": "653c18fc2ac49dc26b5ed7a3",
+                "type": "installation",
+                "name": "SUN ROOF - SMALL",
+                "qbId": "49",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "653c18fc2ac49dc26b5ed7a4",
+                        "id": "653c18fc2ac49dc26b5ed7a4"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "653c18fc2ac49dc26b5ed7a5",
+                        "id": "653c18fc2ac49dc26b5ed7a5"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "653c18fc2ac49dc26b5ed7a6",
+                        "id": "653c18fc2ac49dc26b5ed7a6"
+                    }
+                ],
+                "timeOfCompletion": 0.25,
+                "isFull": false,
+                "dealershipPrices": [
+                    {
+                        "customerId": "143",
+                        "price": 89,
+                        "_id": "654120938b7a07e191d62356",
+                        "id": "654120938b7a07e191d62356"
+                    },
+                    {
+                        "customerId": "154",
+                        "price": 45,
+                        "_id": "65718a0be7b63410940c7937",
+                        "id": "65718a0be7b63410940c7937"
+                    }
+                ],
+                "__v": 0,
+                "sunRoof": true,
+                "id": "653c18fc2ac49dc26b5ed7a3"
+            },
+            "filmQualityId": {
+                "_id": "65367c1f5a33254d3dc12276",
+                "name": "BASIC ASWT FILM",
+                "description": "3 YEARS WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c1f5a33254d3dc12276"
+            },
+            "price": 55,
+            "__v": 0,
+            "id": "653c1e321d47c8ef5bc005db"
+        },
+
+        {
+            "_id": "653c1cc21d47c8ef5bc0058d",
+            "serviceId": {
+                "_id": "653c18fc2ac49dc26b5ed7a3",
+                "type": "installation",
+                "name": "SUN ROOF - SMALL",
+                "qbId": "49",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "653c18fc2ac49dc26b5ed7a4",
+                        "id": "653c18fc2ac49dc26b5ed7a4"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "653c18fc2ac49dc26b5ed7a5",
+                        "id": "653c18fc2ac49dc26b5ed7a5"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "653c18fc2ac49dc26b5ed7a6",
+                        "id": "653c18fc2ac49dc26b5ed7a6"
+                    }
+                ],
+                "timeOfCompletion": 0.25,
+                "isFull": false,
+                "dealershipPrices": [
+                    {
+                        "customerId": "143",
+                        "price": 89,
+                        "_id": "654120938b7a07e191d62356",
+                        "id": "654120938b7a07e191d62356"
+                    },
+                    {
+                        "customerId": "154",
+                        "price": 45,
+                        "_id": "65718a0be7b63410940c7937",
+                        "id": "65718a0be7b63410940c7937"
+                    }
+                ],
+                "__v": 0,
+                "sunRoof": true,
+                "id": "653c18fc2ac49dc26b5ed7a3"
+            },
+            "filmQualityId": {
+                "_id": "65367c965a33254d3dc12282",
+                "name": "LLUMAR IRX(NANO-CERAMIC)",
+                "description": "LIFE TIME WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c965a33254d3dc12282"
+            },
+            "price": 120,
+            "__v": 0,
+            "id": "653c1cc21d47c8ef5bc0058d"
+        },
+
+        {
+            "_id": "653bcd6d713194604bcd1240",
+            "serviceId": {
+                "_id": "653690e0bc4911fa8bd5c02b",
+                "type": "removal",
+                "name": "FULL REMOVAL (R)",
+                "qbId": "41",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "653690e0bc4911fa8bd5c02c",
+                        "id": "653690e0bc4911fa8bd5c02c"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "653690e0bc4911fa8bd5c02d",
+                        "id": "653690e0bc4911fa8bd5c02d"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "653690e0bc4911fa8bd5c02e",
+                        "id": "653690e0bc4911fa8bd5c02e"
+                    }
+                ],
+                "timeOfCompletion": 3,
+                "dealershipPrices": [],
+                "__v": 0,
+                "isFull": true,
+                "id": "653690e0bc4911fa8bd5c02b"
+            },
+            "categoryId": {
+                "_id": "653b98632d4709636fabaee0",
+                "name": "4doorssuv",
+                "description": "4 Doors Suv",
+                "updated": true,
+                "__v": 0,
+                "id": "653b98632d4709636fabaee0"
+            },
+            "price": 200,
+            "__v": 0,
+            "id": "653bcd6d713194604bcd1240"
+        },
+        {
+            "_id": "653bcd50713194604bcd122e",
+            "serviceId": {
+                "_id": "653690e0bc4911fa8bd5c02b",
+                "type": "removal",
+                "name": "FULL REMOVAL (R)",
+                "qbId": "41",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "653690e0bc4911fa8bd5c02c",
+                        "id": "653690e0bc4911fa8bd5c02c"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "653690e0bc4911fa8bd5c02d",
+                        "id": "653690e0bc4911fa8bd5c02d"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "653690e0bc4911fa8bd5c02e",
+                        "id": "653690e0bc4911fa8bd5c02e"
+                    }
+                ],
+                "timeOfCompletion": 3,
+                "dealershipPrices": [],
+                "__v": 0,
+                "isFull": true,
+                "id": "653690e0bc4911fa8bd5c02b"
+            },
+            "categoryId": {
+                "_id": "653b98792d4709636fabaee7",
+                "name": "minivan",
+                "description": "Mini Van",
+                "updated": true,
+                "__v": 0,
+                "id": "653b98792d4709636fabaee7"
+            },
+            "price": 200,
+            "__v": 0,
+            "id": "653bcd50713194604bcd122e"
+        },
+
+        {
+            "_id": "653bcba4713194604bcd11f2",
+            "serviceId": {
+                "isFull": false,
+                "_id": "653690bebc4911fa8bd5c024",
+                "type": "removal",
+                "name": "2 FRONT DOORS (R)",
+                "qbId": "40",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "653690bebc4911fa8bd5c025",
+                        "id": "653690bebc4911fa8bd5c025"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "653690bebc4911fa8bd5c026",
+                        "id": "653690bebc4911fa8bd5c026"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "653690bebc4911fa8bd5c027",
+                        "id": "653690bebc4911fa8bd5c027"
+                    }
+                ],
+                "timeOfCompletion": 1,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "653690bebc4911fa8bd5c024"
+            },
+            "price": 60,
+            "__v": 0,
+            "id": "653bcba4713194604bcd11f2"
+        },
+        {
+            "_id": "653bcb17713194604bcd11e4",
+            "serviceId": {
+                "isFull": false,
+                "_id": "653690a2bc4911fa8bd5c01d",
+                "type": "removal",
+                "name": "SINGLE DOOR (R)",
+                "qbId": "39",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "653690a2bc4911fa8bd5c01e",
+                        "id": "653690a2bc4911fa8bd5c01e"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "653690a2bc4911fa8bd5c01f",
+                        "id": "653690a2bc4911fa8bd5c01f"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "653690a2bc4911fa8bd5c020",
+                        "id": "653690a2bc4911fa8bd5c020"
+                    }
+                ],
+                "timeOfCompletion": 0.5,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "653690a2bc4911fa8bd5c01d"
+            },
+            "price": 30,
+            "__v": 0,
+            "id": "653bcb17713194604bcd11e4"
+        },
+        {
+            "_id": "653bcada713194604bcd11da",
+            "serviceId": {
+                "isFull": false,
+                "_id": "6536902bbc4911fa8bd5c016",
+                "type": "removal",
+                "name": "BLACK GLASS (R)",
+                "qbId": "38",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "6536902bbc4911fa8bd5c017",
+                        "id": "6536902bbc4911fa8bd5c017"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "6536902bbc4911fa8bd5c018",
+                        "id": "6536902bbc4911fa8bd5c018"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "6536902bbc4911fa8bd5c019",
+                        "id": "6536902bbc4911fa8bd5c019"
+                    }
+                ],
+                "timeOfCompletion": 1.5,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "6536902bbc4911fa8bd5c016"
+            },
+            "price": 100,
+            "__v": 0,
+            "id": "653bcada713194604bcd11da"
+        },
+
+        {
+            "_id": "653bb43124655fb96d0fa2a6",
+            "serviceId": {
+                "_id": "65368ec9f6d7e30fcb767054",
+                "type": "installation",
+                "name": "FULL TINT",
+                "qbId": "36",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "65368ec9f6d7e30fcb767055",
+                        "id": "65368ec9f6d7e30fcb767055"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "65368ec9f6d7e30fcb767056",
+                        "id": "65368ec9f6d7e30fcb767056"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "65368ec9f6d7e30fcb767057",
+                        "id": "65368ec9f6d7e30fcb767057"
+                    }
+                ],
+                "timeOfCompletion": 1.5,
+                "dealershipPrices": [],
+                "__v": 0,
+                "isFull": true,
+                "id": "65368ec9f6d7e30fcb767054"
+            },
+            "filmQualityId": {
+                "_id": "65367c535a33254d3dc1227a",
+                "name": "LLUMAR ATC",
+                "description": "LIFE TIME WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c535a33254d3dc1227a"
+            },
+            "categoryId": {
+                "_id": "653b98632d4709636fabaee0",
+                "name": "4doorssuv",
+                "description": "4 Doors Suv",
+                "updated": true,
+                "__v": 0,
+                "id": "653b98632d4709636fabaee0"
+            },
+            "price": 350,
+            "__v": 0,
+            "id": "653bb43124655fb96d0fa2a6"
+        },
+        {
+            "_id": "653ba863de0bbe8136f67408",
+            "serviceId": {
+                "_id": "65368ec9f6d7e30fcb767054",
+                "type": "installation",
+                "name": "FULL TINT",
+                "qbId": "36",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "65368ec9f6d7e30fcb767055",
+                        "id": "65368ec9f6d7e30fcb767055"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "65368ec9f6d7e30fcb767056",
+                        "id": "65368ec9f6d7e30fcb767056"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "65368ec9f6d7e30fcb767057",
+                        "id": "65368ec9f6d7e30fcb767057"
+                    }
+                ],
+                "timeOfCompletion": 1.5,
+                "dealershipPrices": [],
+                "__v": 0,
+                "isFull": true,
+                "id": "65368ec9f6d7e30fcb767054"
+            },
+            "filmQualityId": {
+                "_id": "65367c535a33254d3dc1227a",
+                "name": "LLUMAR ATC",
+                "description": "LIFE TIME WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c535a33254d3dc1227a"
+            },
+            "categoryId": {
+                "_id": "653b97eac95696731b3c8c19",
+                "name": "2or4doorscar",
+                "description": "2 Or 4 Doors Car",
+                "updated": true,
+                "__v": 0,
+                "id": "653b97eac95696731b3c8c19"
+            },
+            "price": 320,
+            "__v": 0,
+            "id": "653ba863de0bbe8136f67408"
+        },
+        {
+            "_id": "653698781ebb425981b9d9af",
+            "serviceId": {
+                "isFull": false,
+                "_id": "65368ea6f6d7e30fcb76704d",
+                "type": "installation",
+                "name": "2 FRONT DOORS",
+                "qbId": "35",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "65368ea6f6d7e30fcb76704e",
+                        "id": "65368ea6f6d7e30fcb76704e"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "65368ea6f6d7e30fcb76704f",
+                        "id": "65368ea6f6d7e30fcb76704f"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "65368ea6f6d7e30fcb767050",
+                        "id": "65368ea6f6d7e30fcb767050"
+                    }
+                ],
+                "timeOfCompletion": 0.5,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "65368ea6f6d7e30fcb76704d"
+            },
+            "filmQualityId": {
+                "_id": "65367c535a33254d3dc1227a",
+                "name": "LLUMAR ATC",
+                "description": "LIFE TIME WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c535a33254d3dc1227a"
+            },
+            "price": 140,
+            "__v": 0,
+            "id": "653698781ebb425981b9d9af"
+        },
+        {
+            "_id": "6536975d1ebb425981b9d9a5",
+            "serviceId": null,
+            "filmQualityId": {
+                "_id": "65367c1f5a33254d3dc12276",
+                "name": "BASIC ASWT FILM",
+                "description": "3 YEARS WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c1f5a33254d3dc12276"
+            },
+            "price": 30,
+            "__v": 0,
+            "id": "6536975d1ebb425981b9d9a5"
+        },
+        {
+            "_id": "653696e71ebb425981b9d99b",
+            "serviceId": {
+                "isFull": false,
+                "_id": "65368e4bf6d7e30fcb76703f",
+                "type": "installation",
+                "name": "BACK GLASS",
+                "qbId": "33",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "65368e4bf6d7e30fcb767040",
+                        "id": "65368e4bf6d7e30fcb767040"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "65368e4bf6d7e30fcb767041",
+                        "id": "65368e4bf6d7e30fcb767041"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "65368e4bf6d7e30fcb767042",
+                        "id": "65368e4bf6d7e30fcb767042"
+                    }
+                ],
+                "timeOfCompletion": 1,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "65368e4bf6d7e30fcb76703f"
+            },
+            "filmQualityId": {
+                "_id": "65367c1f5a33254d3dc12276",
+                "name": "BASIC ASWT FILM",
+                "description": "3 YEARS WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c1f5a33254d3dc12276"
+            },
+            "price": 130,
+            "__v": 0,
+            "id": "653696e71ebb425981b9d99b"
+        },
+        {
+            "_id": "653694b508391ecd1ad74460",
+            "serviceId": {
+                "isFull": false,
+                "_id": "65368ea6f6d7e30fcb76704d",
+                "type": "installation",
+                "name": "2 FRONT DOORS",
+                "qbId": "35",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "65368ea6f6d7e30fcb76704e",
+                        "id": "65368ea6f6d7e30fcb76704e"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "65368ea6f6d7e30fcb76704f",
+                        "id": "65368ea6f6d7e30fcb76704f"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "65368ea6f6d7e30fcb767050",
+                        "id": "65368ea6f6d7e30fcb767050"
+                    }
+                ],
+                "timeOfCompletion": 0.5,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "65368ea6f6d7e30fcb76704d"
+            },
+            "filmQualityId": {
+                "_id": "65367c1f5a33254d3dc12276",
+                "name": "BASIC ASWT FILM",
+                "description": "3 YEARS WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c1f5a33254d3dc12276"
+            },
+            "price": 110,
+            "__v": 0,
+            "id": "653694b508391ecd1ad74460"
+        },
+        {
+            "_id": "6536941e08391ecd1ad7442b",
+            "serviceId": {
+                "isFull": false,
+                "_id": "65368e70f6d7e30fcb767046",
+                "type": "installation",
+                "name": "SINGLE DOOR",
+                "qbId": "34",
+                "defaultPrices": [
+                    {
+                        "category": "suv",
+                        "price": 30,
+                        "_id": "65368e70f6d7e30fcb767047",
+                        "id": "65368e70f6d7e30fcb767047"
+                    },
+                    {
+                        "category": "sedan",
+                        "price": 70,
+                        "_id": "65368e70f6d7e30fcb767048",
+                        "id": "65368e70f6d7e30fcb767048"
+                    },
+                    {
+                        "category": "truck",
+                        "price": 100,
+                        "_id": "65368e70f6d7e30fcb767049",
+                        "id": "65368e70f6d7e30fcb767049"
+                    }
+                ],
+                "timeOfCompletion": 0.25,
+                "dealershipPrices": [],
+                "__v": 0,
+                "id": "65368e70f6d7e30fcb767046"
+            },
+            "filmQualityId": {
+                "_id": "65367c1f5a33254d3dc12276",
+                "name": "BASIC ASWT FILM",
+                "description": "3 YEARS WARANTY",
+                "__v": 0,
+                "type": "auto",
+                "id": "65367c1f5a33254d3dc12276"
+            },
+            "price": 55,
+            "__v": 0,
+            "id": "6536941e08391ecd1ad7442b"
+        }
+    ]
+}
