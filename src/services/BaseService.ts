@@ -1,6 +1,6 @@
 import axios from 'axios'
 import appConfig from '@/configs/app.config'
-import { TOKEN_TYPE, REQUEST_HEADER_AUTH_KEY, REQUEST_HEADER_AUTH_TOKEN, REQUEST_HEADER_ACCEPT, REQUEST_HEADER_CONTENT_TYPE } from '@/constants/api.constant'
+import { TOKEN_TYPE, REQUEST_HEADER_AUTH_KEY, REQUEST_HEADER_CONTENT_TYPE, REQUEST_HEADER_ACCEPT } from '@/constants/api.constant'
 import { PERSIST_STORE_NAME } from '@/constants/app.constant'
 import deepParseJson from '@/utils/deepParseJson'
 import store, { signOutSuccess } from '../store'
@@ -27,26 +27,31 @@ BaseService.interceptors.request.use(
             const { auth } = store.getState()
             accessToken = auth.session.token
 
-            config.headers[
-                REQUEST_HEADER_ACCEPT
-            ] = `application/json`
+            // config.headers[
+            //     REQUEST_HEADER_ACCEPT
+            // ] = `application/json`
+
+            // config.headers[
+            //     REQUEST_HEADER_CONTENT_TYPE
+            // ] = `application/json`
+
+        }
+
+
+        if (accessToken) {
 
             config.headers[
                 REQUEST_HEADER_CONTENT_TYPE
             ] = `application/json`
 
-        }
-
-        if (accessToken) {
             config.headers[
                 REQUEST_HEADER_AUTH_KEY
             ] = `${TOKEN_TYPE} ${accessToken}`
 
+
             config.headers[
-                REQUEST_HEADER_AUTH_TOKEN
-            ] = `${accessToken}`
-
-
+                REQUEST_HEADER_ACCEPT
+            ] = `application/json`
 
         }
 
@@ -56,6 +61,10 @@ BaseService.interceptors.request.use(
         return Promise.reject(error)
     }
 )
+
+// config.headers[
+//     REQUEST_HEADER_AUTH_TOKEN
+// ] = `${accessToken}`
 
 BaseService.interceptors.response.use(
     (response) => response,

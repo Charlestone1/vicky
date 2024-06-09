@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     apiSignIn,
-    apiSignUp,
+    // apiSignUp,
     apiCreateUser,
     apiCreateManager,
     apiGetAllUsers,
@@ -76,10 +76,11 @@ function useAuth() {
                 // if (resp.data.user) {
                 //     dispatch(setUser(resp.data.user))
                 // }
-                const redirectUrl = query.get(REDIRECT_URL_KEY)
-                navigate(
-                    redirectUrl ? redirectUrl : appConfig.unAuthenticatedOtp
-                )
+                // const redirectUrl = query.get(REDIRECT_URL_KEY)
+                // navigate(
+                //     redirectUrl ? redirectUrl : appConfig.unAuthenticatedOtp
+                // )
+                navigate('/otp')
                 return {
                     status: true,
                     message: '',
@@ -124,6 +125,7 @@ function useAuth() {
                 navigate(
                     redirectUrl ? redirectUrl : appConfig.authenticatedEntryPath
                 )
+                // navigate('/home');
                 return {
                     status: true,
                     message: resp.data.message,

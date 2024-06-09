@@ -3,123 +3,48 @@
 import ApiService from '@/services/ApiService'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-
-// export type Staff = {
-//     _id: string
-//     firstName: string
-//     lastName: string
-//     email: string
-//     role: string
-//     avatarUrl: string
-//     avatarImgTag: string
-//     __v: number
-//     // isAdmin?: boolean;
-//     departments: {
-//         _id: string
-//         name: string
-//         description: string
-//         __v: number
-//         id: string
-//     }[]
-// }
-
-export type Department = {
-    _id: string
-    name: string
-    description: string
-    __v: number
-    id: string
-}
-
-type Coordinates = {
-    latitude: number
-    longitude: number
-}
-
-export type SignInLocation = {
-    coordinates: Coordinates
-    timestamp: string
-    description: string
-    _id: string
-}
-
-interface CheckInHistory {
-    coordinates: Coordinates;
-    timestamp: string;
-    description: string;
-    checkInType: string;
-    _id: string;
-}
-
-interface CheckInDetails {
-    checkInHistory: CheckInHistory[];
-    isCheckedIn: boolean;
-    latestCheckinTime: string;
-}
-
-interface EarningRate {
-    earningRate: number;
-    serviceId: string;
-    _id: string;
-}
-
-interface EarningHistory {
-    timestamp: string;
-    amountEarned: number;
-    serviceId: string;
-    pbId: string;
-    description?: string;
-    _id: string;
-}
-
-export type StaffDetails = {
-    checkInDetails: CheckInDetails;
-    currentSignInLocation?: SignInLocation;
-    permittedCustomers: string[];
-    isAvailableForAppointments?: boolean;
-    earningRates: EarningRate[];
-    totalEarning: number;
-    signInLocations: SignInLocation[];
-    earningHistory: EarningHistory[];
-    currentTrips: any[];
-    mostRecentScannedTime: string;
-    isLoggedIn: boolean;
-
-    earningRate?: number
-    _id: string
+interface Pagination {
+    prev: boolean;
+    page: number;
+    total: number;
+    next: boolean;
 }
 
 export type Staff = {
-    _id: string
-    firstName: string
-    lastName: string
-    email: string
-    role: string
-    departments: Department[]
-    signInLocations: SignInLocation[]
-    avatarUrl: string
-    avatarImgTag: string
-    __v: number
-    id: string
-    staffDetails?: StaffDetails
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string | null;
+    phone: string;
+    type: string;
+    username: string;
+    status: string;
+    deleted_at: string | null;
+    created_at: string;
+    updated_at: string;
+}
+interface SatffData {
+    users: Staff[];
+    pagination: Pagination;
 }
 
 export type StaffState = {
-    data: Staff[]
+    data: SatffData
     loading: boolean
     error: string | null
 }
 
-export const fetchStaffData = createAsyncThunk<Staff[]>(
+export const fetchStaffData = createAsyncThunk<SatffData>(
     'staff/fetchData',
     async () => {
 
         try {
-            const response = await ApiService.fetchData<{ data: Staff[] }>({
-                url: '/users/employees',
+            const response = await ApiService.fetchData<{ data: SatffData }>({
+                url: '/user/?type=staff&status=active',
+                // url: '/user/?type=staff&status=active&softDelete=true',
                 method: 'get',
             })
-            // console.log(response.data);
+            console.log(response.data);
             return response.data.data
         } catch (error: any) {
             throw error.message
@@ -128,7 +53,7 @@ export const fetchStaffData = createAsyncThunk<Staff[]>(
 )
 
 const initialState: StaffState = {
-    data: [],
+    data: {} as SatffData,
     loading: false,
     error: null,
 }

@@ -76,7 +76,7 @@ const ResetPasswordForm = (props: ResetPasswordFormProps) => {
                     <>
                         <h3 className="mb-1">Set new password</h3>
                         <p>
-                            Your new password must different from your previous password
+                            Your new password must be different from your previous password
                         </p>
                     </>
                 )}

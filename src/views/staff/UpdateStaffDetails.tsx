@@ -26,10 +26,9 @@ import axios from 'axios'
 interface UpdatedStaffFormProps extends CommonProps {
     data: {
         id: string
-        firstName: string
-        lastName: string
-        role: string
-        departments: string[]
+        first_name: string
+        last_name: string
+        type: string
     }
     disableSubmit?: boolean
     signInUrl?: string
@@ -42,39 +41,21 @@ type Option = {
 }
 
 const roleOptions: Option[] = [
-    { value: 'staff', label: 'Staff' },
+    { value: 'STAFF', label: 'STAFF' },
     { value: 'porter', label: 'Porter' },
 ]
 
 type UpdateStaffFormSchema = {
-    firstName: string
-    lastName: string
-    role: string
-    departments: string[]
+    first_name: string
+    last_name: string
+    type: string
     // password: string
 }
 
 const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Please enter your first name'),
-    lastName: Yup.string().required('Please enter a first name'),
-
-    role: Yup.string().required('Please select role'),
-    departments: Yup.array()
-        .min(1, 'Select at least one Department')
-        .test(
-            'check-departments',
-            'Please select a department',
-            function (value) {
-                if (value && value[0] && value[0].length < 1) {
-                    // console.log(value[0].length)
-                    return this.createError({
-                        path: 'departments',
-                        message: 'select a department',
-                    })
-                }
-                return true
-            }
-        ),
+    first_name: Yup.string().required('Please enter your first name'),
+    last_name: Yup.string().required('Please enter a first name'),
+    type: Yup.string().required('Please select type'),
 })
 
 const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
@@ -136,17 +117,16 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
         values: UpdateStaffFormSchema,
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
-        const { firstName, lastName, role, departments } = values
+        const { first_name, last_name, type } = values
         setSubmitting(true)
 
         const employeeId = `${props?.data?.id}`
 
 
         const result = await updateStaff(employeeId, {
-            firstName,
-            lastName,
-            role,
-            departments,
+            first_name,
+            last_name,
+            type,
         })
 
         if (result?.status === 'failed') {
@@ -159,10 +139,9 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
             props?.setIsOpen(false)
             toast.push(
                 <Notification title={`Successfully Added Staff`} type="success">
-                    Successfully Updated staff {firstName} to as a Staff.
+                    Successfully Updated staff details.
                 </Notification>
             )
-            // console.log('success')
         }
 
         setSubmitting(false)
@@ -189,10 +168,9 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
             )}
             <Formik
                 initialValues={{
-                    firstName: `${props?.data?.firstName}`,
-                    lastName: `${props?.data?.lastName}`,
-                    role: `${props?.data?.role}`,
-                    departments: props?.data?.departments.map((item) => item),
+                    first_name: `${props?.data?.first_name}`,
+                    last_name: `${props?.data?.last_name}`,
+                    type: `${props?.data?.type}`,
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
@@ -208,28 +186,28 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
                         <FormContainer className="grid grid-cols-2 gap-x-3">
                             <FormItem
                                 label="First Name"
-                                invalid={errors.firstName && touched.firstName}
-                                errorMessage={errors.firstName}
+                                invalid={errors.first_name && touched.first_name}
+                                errorMessage={errors.first_name}
                             >
                                 <Field
                                     type="text"
                                     // size="sm"
                                     autoComplete="off"
-                                    name="firstName"
+                                    name="first_name"
                                     placeholder="Enter First Name"
                                     component={Input}
                                 />
                             </FormItem>
                             <FormItem
                                 label="Last Name"
-                                invalid={errors.lastName && touched.lastName}
-                                errorMessage={errors.lastName}
+                                invalid={errors.last_name && touched.last_name}
+                                errorMessage={errors.last_name}
                             >
                                 <Field
                                     type="text"
                                     // size="sm"
                                     autoComplete="off"
-                                    name="lastName"
+                                    name="last_name"
                                     placeholder="Enter Last Name"
                                     component={Input}
                                 />
@@ -237,10 +215,10 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
 
                             <FormItem
                                 label="Select Staff Role"
-                                invalid={errors.role && touched.role}
-                                errorMessage={errors.role}
+                                invalid={errors.type && touched.type}
+                                errorMessage={errors.type}
                             >
-                                <Field name="role">
+                                <Field name="type">
                                     {({
                                         field,
                                         form,
@@ -251,7 +229,7 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
                                             options={roleOptions}
                                             value={roleOptions.filter(
                                                 (option) =>
-                                                    option.value === values.role
+                                                    option.value === values.type
                                             )}
                                             onChange={(option) =>
                                                 form.setFieldValue(
@@ -259,46 +237,6 @@ const UpdateStaffDetails = (props: UpdatedStaffFormProps) => {
                                                     option?.value
                                                 )
                                             }
-                                        />
-                                    )}
-                                </Field>
-                            </FormItem>
-
-                            <FormItem
-                                label="Select Department"
-                                invalid={Boolean(
-                                    errors.departments && touched.departments
-                                )}
-                                errorMessage={errors.departments as string}
-                            >
-                                <Field name="departments">
-                                    {({
-                                        field,
-                                        form,
-                                    }: FieldProps<UpdateStaffFormSchema>) => (
-                                        <Select<Option, true>
-                                            isMulti
-                                            componentAs={CreatableSelect}
-                                            field={field}
-                                            // size="sm"
-                                            form={form}
-                                            options={departmentOptions}
-                                            value={departmentOptions.filter(
-                                                (option) =>
-                                                    values.departments.includes(
-                                                        option.value
-                                                    )
-                                            )}
-                                            onChange={(selectedOptions) => {
-                                                const selectedValues =
-                                                    selectedOptions.map(
-                                                        (option) => option.value
-                                                    )
-                                                form.setFieldValue(
-                                                    field.name,
-                                                    selectedValues
-                                                )
-                                            }}
                                         />
                                     )}
                                 </Field>

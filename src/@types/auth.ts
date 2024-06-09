@@ -41,6 +41,20 @@ export type SignInOtpResponse = {
         }
     }
 }
+
+// Forgot Password Starts
+export type ForgotPassword = {
+    email: string
+}
+export type RequestDeleteStaff = {
+    email: string
+    password: string
+}
+
+export type ResetPassword = {
+    newPassword: string
+    confirmPassword: string
+}
 // export type SignInResponse = {
 //     token: string
 //     success: boolean
@@ -65,7 +79,7 @@ export type SignUpCredential = {
     password: string
 }
 
-// Change Password starts
+// Change Password starts (DONE)
 export type ChangePassword = {
     currentPassword: string
     newPassword: string
@@ -175,20 +189,6 @@ export type CreateGenManagerCredetials = {
     role: string
 }
 // Create/Register Manager And Staff Ends
-
-// Forgot Password Starts
-export type ForgotPassword = {
-    email: string
-}
-export type RequestDeleteStaff = {
-    email: string
-    password: string
-}
-
-export type ResetPassword = {
-    newPassword: string
-    confirmPassword: string
-}
 
 // SANITIZE types: SHOULD ALL BE MOVED into the another types file
 export type CreateSingleInstallServicesBody = {

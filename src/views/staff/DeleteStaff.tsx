@@ -26,10 +26,9 @@ import axios from 'axios'
 interface UpdatedStaffFormProps extends CommonProps {
     data: {
         id: string
-        firstName: string
-        lastName: string
-        role: string
-        departments: string[]
+        first_name: string
+        last_name: string
+        type: string
     }
     disableSubmit?: boolean
     signInUrl?: string
@@ -47,32 +46,15 @@ const roleOptions: Option[] = [
 ]
 
 type UpdateStaffFormSchema = {
-    firstName: string
-    lastName: string
-    role: string
-    departments: string[]
+    first_name: string
+    last_name: string
+    type: string
 }
 
 const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Please enter your first name'),
-    lastName: Yup.string().required('Please enter a first name'),
-
-    role: Yup.string().required('Please select role'),
-    departments: Yup.array()
-        .min(1, 'Select at least one Department')
-        .test(
-            'check-departments',
-            'Please select a department',
-            function (value) {
-                if (value && value[0] && value[0].length < 1) {
-                    return this.createError({
-                        path: 'departments',
-                        message: 'select a department',
-                    })
-                }
-                return true
-            }
-        ),
+    first_name: Yup.string().required('Enter first name'),
+    last_name: Yup.string().required('Enter a last name'),
+    type: Yup.string().required('Please select type'),
 })
 
 const DeleteStaff = (props: UpdatedStaffFormProps) => {
@@ -80,70 +62,22 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
     const { deleteOneStaff } = useAuth()
     const dispatch = useAppDispatch()
     const [message, setMessage] = useTimeOutMessage()
-    const [deptmentData, setDeptmentData] = useState<DepartmentData[]>([])
 
-    const rawPersistData = localStorage.getItem(PERSIST_STORE_NAME)
-    const persistData = deepParseJson(rawPersistData)
-    const baseUrl = appConfig.apiPrefix
-
-
-    useEffect(() => {
-        fetchAllDepartmentData()
-    }, [])
-
-    const fetchAllDepartmentData = async () => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let accessToken = (persistData as any)?.auth?.session?.token
-
-        function getToken() {
-            if (!accessToken) {
-                const { auth } = store.getState()
-                accessToken = auth.session.token
-                return accessToken
-            }
-            return accessToken
-        }
-
-        try {
-            const response = await axios.get(`${baseUrl}/departments`, {
-                headers: {
-                    'x-auth-token': getToken(),
-                    'Content-Type': 'application/json',
-                },
-            })
-
-            const responseData = response.data.data
-            setDeptmentData(responseData)
-        } catch (error: any) {
-            console.log('Error: ', error)
-            if (error.message === "Request failed with status code 401") {
-                window.location.href = "/logoutt";
-            }
-        }
-    }
-
-    const departmentOptions = deptmentData?.map(
-        (department: DepartmentData) => ({
-            value: department._id,
-            label: department.description,
-        })
-    )
 
     const deleteThisUser = async (
         values: UpdateStaffFormSchema,
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
-        const { firstName, lastName, role, departments } = values
+        const { first_name, last_name, type } = values
         setSubmitting(true)
 
         const employeeId = `${props?.data?.id}`
 
 
         const result = await deleteOneStaff(employeeId, {
-            firstName,
-            lastName,
-            role,
-            departments,
+            first_name,
+            last_name,
+            type,
         })
 
         if (result?.status === 'failed') {
@@ -156,7 +90,7 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
             props?.setIsOpen(false)
             toast.push(
                 <Notification title={`Successfully Deleted Staff`} type="success">
-                    Successfully Deleted {firstName} from the user list.
+                    Successfully Deleted {first_name} from the Staff list.
                 </Notification>
             )
             // console.log('success')
@@ -186,10 +120,9 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
             )}
             <Formik
                 initialValues={{
-                    firstName: `${props?.data?.firstName}`,
-                    lastName: `${props?.data?.lastName}`,
-                    role: `${props?.data?.role}`,
-                    departments: props?.data?.departments.map((item) => item),
+                    first_name: `${props?.data?.first_name}`,
+                    last_name: `${props?.data?.last_name}`,
+                    type: `${props?.data?.type}`
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
@@ -205,30 +138,30 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
                         <FormContainer className="grid grid-cols-2 gap-x-3">
                             <FormItem
                                 label="First Name"
-                                invalid={errors.firstName && touched.firstName}
-                                errorMessage={errors.firstName}
+                                invalid={errors.first_name && touched.first_name}
+                                errorMessage={errors.first_name}
                             >
                                 <Field
                                     disabled
                                     type="text"
                                     // size="sm"
                                     autoComplete="off"
-                                    name="firstName"
+                                    name="first_name"
                                     placeholder="Enter First Name"
                                     component={Input}
                                 />
                             </FormItem>
                             <FormItem
                                 label="Last Name"
-                                invalid={errors.lastName && touched.lastName}
-                                errorMessage={errors.lastName}
+                                invalid={errors.last_name && touched.last_name}
+                                errorMessage={errors.last_name}
                             >
                                 <Field
                                     disabled
                                     type="text"
                                     // size="sm"
                                     autoComplete="off"
-                                    name="lastName"
+                                    name="last_name"
                                     placeholder="Enter Last Name"
                                     component={Input}
                                 />
@@ -236,10 +169,10 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
 
                             <FormItem
                                 label="Select Staff Role"
-                                invalid={errors.role && touched.role}
-                                errorMessage={errors.role}
+                                invalid={errors.type && touched.type}
+                                errorMessage={errors.type}
                             >
-                                <Field name="role">
+                                <Field name="type">
                                     {({
                                         field,
                                         form,
@@ -251,7 +184,7 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
                                             options={roleOptions}
                                             value={roleOptions.filter(
                                                 (option) =>
-                                                    option.value === values.role
+                                                    option.value === values.type
                                             )}
                                             onChange={(option) =>
                                                 form.setFieldValue(
@@ -259,47 +192,6 @@ const DeleteStaff = (props: UpdatedStaffFormProps) => {
                                                     option?.value
                                                 )
                                             }
-                                        />
-                                    )}
-                                </Field>
-                            </FormItem>
-
-                            <FormItem
-                                label="Select Department"
-                                invalid={Boolean(
-                                    errors.departments && touched.departments
-                                )}
-                                errorMessage={errors.departments as string}
-                            >
-                                <Field name="departments">
-                                    {({
-                                        field,
-                                        form,
-                                    }: FieldProps<UpdateStaffFormSchema>) => (
-                                        <Select<Option, true>
-                                            isMulti
-                                            componentAs={CreatableSelect}
-                                            field={field}
-                                            // size="sm"
-                                            isDisabled={true}
-                                            form={form}
-                                            options={departmentOptions}
-                                            value={departmentOptions.filter(
-                                                (option) =>
-                                                    values.departments.includes(
-                                                        option.value
-                                                    )
-                                            )}
-                                            onChange={(selectedOptions) => {
-                                                const selectedValues =
-                                                    selectedOptions.map(
-                                                        (option) => option.value
-                                                    )
-                                                form.setFieldValue(
-                                                    field.name,
-                                                    selectedValues
-                                                )
-                                            }}
                                         />
                                     )}
                                 </Field>

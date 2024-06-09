@@ -50,12 +50,12 @@ const _UserDropdown = ({ className }: CommonProps) => {
     const UserAvatar = (
         <div className={classNames(className, 'flex items-center gap-2')}>
             {/* <Avatar src={user.avatarUrl} size={32} shape="circle" icon={<HiOutlineUser />} /> */}
-            {user.firstName && user.lastName &&
-                <CircularAvatar string1={user.firstName} string2={user.lastName} />
+            {user.user.first_name && user.user.last_name &&
+                <CircularAvatar string1={user.user.first_name} string2={user.user.last_name} />
             }
             <div className="hidden md:block">
-                <div className="font-bold capitalize">{user.firstName} {user.lastName}</div>
-                <div className="text-xs capitalize">{user.role}</div>
+                <div className="font-bold capitalize">{user.user.first_name} {user.user.last_name}</div>
+                <div className="text-xs capitalize">{user.user.type}</div>
             </div>
         </div>
     )
@@ -72,9 +72,9 @@ const _UserDropdown = ({ className }: CommonProps) => {
                         {/* <Avatar src={user.avatarUrl} shape="circle" icon={<HiOutlineUser />} /> */}
                         <div>
                             <div className="font-bold text-gray-900 dark:text-gray-100 capitalize">
-                                {user.firstName} {user.lastName}
+                                {user.user.first_name} {user.user.last_name}
                             </div>
-                            <div className="text-xs">{user.email}</div>
+                            <div className="text-xs">{user.user.email}</div>
                         </div>
                     </div>
                 </Dropdown.Item>

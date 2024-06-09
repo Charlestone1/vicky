@@ -102,7 +102,7 @@ export const fetchUsersData = createAsyncThunk<User[]>(
 
         try {
             const response = await ApiService.fetchData<{ data: User[] }>({
-                url: '/users',
+                url: '/user',
                 method: 'get',
             })
 

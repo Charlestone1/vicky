@@ -58,17 +58,53 @@ export async function apiOtp(data: SignInOtpCred) {
     })
 }
 
-export async function apiSignUp(data: SignUpCredential) {
-    return ApiService.fetchData<SignUpResponse>({
-        url: '/sign-up',
+export async function apiForgotPassword(data: ForgotPassword) {
+    return ApiService.fetchData({
+        url: '/auth/admin/forgot-password',
         method: 'post',
         data,
     })
 }
+export async function apiSignOut() {
+    return ApiService.fetchData({
+        url: '/logout',
+        method: 'post',
+    })
+}
+
+export async function apiRequestStaffAccountDelete(data: RequestDeleteStaff) {
+    return ApiService.fetchData({
+        url: '/users/request-for-account-deletion',
+        method: 'post',
+        data,
+    })
+}
+
+export async function apiResetPassword(data: ResetPassword) {
+    const queryString = window.location.search
+    const urlSearchParams = new URLSearchParams(queryString)
+
+    const token = urlSearchParams.get('token')
+
+    return ApiService.fetchData({
+        url: `/users/reset-password/${token}`,
+        method: 'post',
+        data,
+    })
+}
+
 export async function apiChangePassword(data: ChangePassword) {
     return ApiService.fetchData<ChangePasswordResponse>({
         url: '/users/update-password',
         method: 'put',
+        data,
+    })
+}
+
+export async function apiSignUp(data: SignUpCredential) {
+    return ApiService.fetchData<SignUpResponse>({
+        url: '/sign-up',
+        method: 'post',
         data,
     })
 }
@@ -353,37 +389,3 @@ export async function apiGetAllUsers() {
     })
 }
 
-export async function apiSignOut() {
-    return ApiService.fetchData({
-        url: '/logout',
-        method: 'post',
-    })
-}
-
-export async function apiForgotPassword(data: ForgotPassword) {
-    return ApiService.fetchData({
-        url: '/users/request-reset',
-        method: 'post',
-        data,
-    })
-}
-export async function apiRequestStaffAccountDelete(data: RequestDeleteStaff) {
-    return ApiService.fetchData({
-        url: '/users/request-for-account-deletion',
-        method: 'post',
-        data,
-    })
-}
-
-export async function apiResetPassword(data: ResetPassword) {
-    const queryString = window.location.search
-    const urlSearchParams = new URLSearchParams(queryString)
-
-    const token = urlSearchParams.get('token')
-
-    return ApiService.fetchData({
-        url: `/users/reset-password/${token}`,
-        method: 'post',
-        data,
-    })
-}

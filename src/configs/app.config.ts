@@ -9,14 +9,13 @@ export type AppConfig = {
 }
 
 const appConfig: AppConfig = {
+    apiPrefix: 'https://api.naijacake.com/api/',
     authenticatedEntryPath: '/home',
     unAuthenticatedEntryPath: '/sign-in',
     unAuthenticatedOtp: '/otp',
     tourPath: '/',
     locale: 'en',
     enableMock: false,
-    apiPrefix: 'https://api.naijacake.com/',
-
 }
 
 export default appConfig

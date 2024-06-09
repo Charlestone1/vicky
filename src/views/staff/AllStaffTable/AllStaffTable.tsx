@@ -143,30 +143,16 @@ const AllStaffTable = () => {
 
     const [updateData, setUpdateData] = useState<{
         id: string
-        firstName: string
-        lastName: string
-        role: string
-        departments: string[]
-    }>()
-    const [deleteData, setDeleteData] = useState<{
-        id: string
-        firstName: string
-        lastName: string
-        role: string
-        departments: string[]
-    }>()
-    const [dealership, setDealership] = useState<{
-        id: string
-        firstName: string
-        lastName: string
-        customer: Customer[]
+        first_name: string
+        last_name: string
+        type: string
     }>()
 
-    const [removeDealership, setRemoveDealership] = useState<{
+    const [deleteData, setDeleteData] = useState<{
         id: string
-        firstName: string
-        lastName: string
-        customer: Customer[]
+        first_name: string
+        last_name: string
+        type: string
     }>()
 
     const dispatch = useAppDispatch()
@@ -175,13 +161,13 @@ const AllStaffTable = () => {
 
     useEffect(() => {
         dispatch(fetchStaffData())
-        dispatch(fetchUsersData())
+        // dispatch(fetchUsersData())
     }, [])
 
     useEffect(() => {
         if (data) {
-            const filteredItems = data.filter(
-                (item) => item.role === 'staff'
+            const filteredItems = data.users.filter(
+                (item) => item.type === 'staff'
             )
             setFilteredData(filteredItems)
         }
@@ -209,10 +195,12 @@ const AllStaffTable = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const columns = useMemo<ColumnDef<Staff>[]>(
         () => [
-            { header: 'First Name', accessorKey: 'firstName' },
-            { header: 'Last Name', accessorKey: 'lastName' },
-            { header: 'Email', accessorKey: 'email' },
-            { header: 'Role', accessorKey: 'role' },
+            { header: 'First Name', accessorKey: 'first_name' },
+            { header: 'Last Name', accessorKey: 'last_name' },
+            { header: 'username', accessorKey: 'username' },
+            { header: 'Phone', accessorKey: 'phone' },
+            { header: 'Type', accessorKey: 'type' },
+            // { header: 'Email', accessorKey: 'email' },
         ],
         []
     )
@@ -280,15 +268,11 @@ const AllStaffTable = () => {
                         size="xs"
                         onClick={() => {
                             setUpdateData({
-                                id: row.original._id,
-                                firstName: row.original.firstName,
-                                lastName: row.original.lastName,
-                                role: row.original.role,
-                                departments: row.original.departments
-                                    ? row.original.departments.map((department) => department.id)
-                                    : [],
+                                id: row.original.id,
+                                first_name: row.original.first_name,
+                                last_name: row.original.last_name,
+                                type: row.original.type,
                             })
-                            // handleServiceEdit()
                             openUpdateDialog()
                         }}
                     />
@@ -299,13 +283,10 @@ const AllStaffTable = () => {
                         size="xs"
                         onClick={() => {
                             setDeleteData({
-                                id: row.original._id,
-                                firstName: row.original.firstName,
-                                lastName: row.original.lastName,
-                                role: row.original.role,
-                                departments: row.original.departments
-                                    ? row.original.departments.map((department) => department.id)
-                                    : [],
+                                id: row.original.id,
+                                first_name: row.original.first_name,
+                                last_name: row.original.last_name,
+                                type: row.original.type,
                             })
                             openDeleteDialog()
                         }}
@@ -414,7 +395,7 @@ const AllStaffTable = () => {
                                         </Th>
                                     )
                                 })}
-                                {user.role && (user.role.includes("admin")) &&
+                                {user.user.type && (user.user.type === "ADMIN") &&
                                     <Th>{actionButtonsColumn.header}</Th>
                                 }
                             </Tr>
@@ -439,7 +420,7 @@ const AllStaffTable = () => {
                                         )
                                     })}
                                     {/* Render the edit button cell for each row */}
-                                    {user.role && (user.role.includes("admin")) &&
+                                    {user.user.type && (user.user.type === "ADMIN") &&
                                         <Td>
                                             {flexRender(actionButtonsColumn.cell, {
                                                 row,
@@ -482,7 +463,7 @@ const AllStaffTable = () => {
                             setIsOpen={setDeleteDialogIsOpen}
                         />
                     </Dialog>
-                    
+
                 </Table>
                 <div className="flex items-center justify-between mt-4">
                     <Pagination
